@@ -1,0 +1,19 @@
+name: Publish to Pub.dev
+
+on: 
+  push:
+    branches:
+      - release
+
+jobs:
+  publishing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '>>> Checkout'
+        uses: actions/checkout@v2
+        
+      - name: '>>> Publish Dart Package'
+        uses: k-paxian/dart-package-publisher@release
+        with:
+          accessToken: ${{ secrets.PUB_DEV_OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.PUB_DEV_OAUTH_REFRESH_TOKEN }}
