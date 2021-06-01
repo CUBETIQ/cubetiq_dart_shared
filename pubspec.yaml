@@ -2,6 +2,7 @@ name: cubetiq
 description: CUBETIQ Dart Shared is functions, utils, and extensions for developers.
 version: 1.0.0
 homepage: https://www.cubetiqs.com
+repository: https://git.cubetiqs.com/CUBETIQ/cubetiq_dart_shared.git
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

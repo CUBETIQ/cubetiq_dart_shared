@@ -4,7 +4,7 @@ import 'mutable_configurable_provider.dart';
 ///
 /// @author sombochea
 /// @since 1.0.0
-class SimpleConfigurationProvider implements MutableConfigurationProvider {
+class SimpleConfigurationProvider extends MutableConfigurationProvider {
   final Map<String, String?> _configs = {};
 
   @override

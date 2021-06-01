@@ -30,7 +30,14 @@ class SystemConfig {
     return getProvider().getOrNull(key, defaultValue: defaultValue);
   }
 
+  static Future<String?> getOrNullAsync(String key, {String? defaultValue}) {
+    return getProvider().getOrNullAsync(key, defaultValue: defaultValue);
+  }
+
   static bool containsKey(String key) => getProvider().containsKey(key);
+
+  static Future<bool> containsKeyAsync(String key) =>
+      getProvider().containsKeyAsync(key);
 
   /// Convert to mutable configuration provider
   static MutableConfigurationProvider _getMutableConfigurationProvider() {
@@ -46,7 +53,31 @@ class SystemConfig {
     _getMutableConfigurationProvider().set(key, value);
   }
 
+  static Future<void> setAsync(String key, String? value) async {
+    await _getMutableConfigurationProvider().setAsync(key, value);
+  }
+
   static void setAll(Map<String, String?> values) {
     _getMutableConfigurationProvider().setAll(values);
+  }
+
+  static Future<void> setAllAsync(Map<String, String?> values) async {
+    await _getMutableConfigurationProvider().setAllAsync(values);
+  }
+
+  static void remove(String key) {
+    _getMutableConfigurationProvider().remove(key);
+  }
+
+  static Future<void> removeAsync(String key) async {
+    await _getMutableConfigurationProvider().removeAsync(key);
+  }
+
+  static void removeAll() {
+    _getMutableConfigurationProvider().removeAll();
+  }
+
+  static Future<void> removeAllAsync() async {
+    await _getMutableConfigurationProvider().removeAllAsync();
   }
 }
