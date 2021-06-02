@@ -1,4 +1,4 @@
-library cubetiq;
+library configurable;
 
 export 'src/configurable/configurable.dart';
 export 'src/configurable/configuration_provider.dart';
