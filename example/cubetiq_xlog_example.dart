@@ -1,4 +1,4 @@
-import 'package:cubetiq/src/json.dart';
+import 'package:cubetiq/interfaces.dart';
 import 'package:cubetiq/xlog.dart';
 
 void main(List<String> args) {
