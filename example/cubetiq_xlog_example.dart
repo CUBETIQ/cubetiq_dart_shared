@@ -1,3 +1,4 @@
+import 'package:cubetiq/src/json.dart';
 import 'package:cubetiq/xlog.dart';
 
 void main(List<String> args) {
@@ -15,17 +16,18 @@ void main(List<String> args) {
 
   XLog.warning(null);
 
-  var json = Person(1, 'Sambo');
+  var person = Person(1, 'Sambo');
 
-  XLog.warning(json, [null, null]);
+  XLog.warning(person, [null, null]);
 }
 
-class Person {
+class Person implements ToJson {
   final id;
   final name;
 
   Person(this.id, this.name);
 
+  @override
   Map toJson() => {
         'id': id,
         'name': name,
