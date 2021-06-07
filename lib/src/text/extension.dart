@@ -32,4 +32,8 @@ extension StringExtensionOnNullable on String? {
   bool get isNullOrEmptyOrBlank => StringUtils.isNullOrEmptyOrBlank(this);
 
   bool get isEqualsIgnoreCase => StringUtils.equalsIgnoreCase(this, this);
+
+  String toPrecision([int precision = 2]) {
+    return StringUtils.formatFromString(this, precision);
+  }
 }

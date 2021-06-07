@@ -6,6 +6,13 @@ class StringUtils {
     return n.toStringAsFixed(n.truncateToDouble() == n ? precision : precision);
   }
 
+  /// Format number from String with precision
+  static String formatFromString(String? text, [int precision = 2]) {
+    text ??= '0.0';
+    var n = double.parse(text);
+    return n.toStringAsFixed(n.truncateToDouble() == n ? precision : precision);
+  }
+
   /// Text format with custom args
   static String? textFormat(String? text, List<dynamic> args) =>
       TextFormatter(text).format(args);
