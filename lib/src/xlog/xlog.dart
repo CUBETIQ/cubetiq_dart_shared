@@ -8,6 +8,10 @@ class XLog {
     logger.success(data, args);
   }
 
+  static void log(String prefix, dynamic data, [List? args]) {
+    logger.show(XLogType.DEBUG, prefix, data, args);
+  }
+
   static void info(dynamic data, [List? args]) {
     logger.info(data, args);
   }
