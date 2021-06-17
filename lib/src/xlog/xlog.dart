@@ -12,6 +12,10 @@ class XLog {
     logger.show(XLogType.DEBUG, prefix, data, args);
   }
 
+  static void show(XLogType type, String prefix, dynamic data, [List? args]) {
+    logger.show(type, prefix, data, args);
+  }
+
   static void info(dynamic data, [List? args]) {
     logger.info(data, args);
   }
