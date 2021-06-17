@@ -7,10 +7,11 @@ extension StringExtensionOnNonull on String {
 }
 
 extension StringExtensionOnNullable on String? {
-  String? textFormat(List<dynamic> args) => StringUtils.textFormat(this, args);
+  String? textFormat({List<dynamic>? args, bool translate = false}) =>
+      StringUtils.textFormat(this, args: args, translate: translate);
 
-  String? decorator(Map<String, dynamic> params) =>
-      StringUtils.decorator(this, params);
+  String? decorator({Map<String, dynamic>? params, bool translate = false}) =>
+      StringUtils.decorator(this, params: params, translate: translate);
 
   bool get isBlank {
     if (this == null) return true;

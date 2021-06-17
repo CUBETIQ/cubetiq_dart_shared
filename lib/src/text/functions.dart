@@ -13,13 +13,19 @@ class StringUtils {
     return n.toStringAsFixed(n.truncateToDouble() == n ? precision : precision);
   }
 
+  /// Text formatter with custom args
+  static TextFormatter textFormatter(String? text, {bool translate = false}) =>
+      TextFormatter(text).translate(translate: translate);
+
   /// Text format with custom args
-  static String? textFormat(String? text, List<dynamic> args) =>
-      TextFormatter(text).format(args);
+  static String? textFormat(String? text,
+          {List<dynamic>? args, bool translate = false}) =>
+      textFormatter(text, translate: translate).format(args: args);
 
   /// Text decorator with custom key/value params
-  static String? decorator(String? text, Map<String, dynamic> params) =>
-      TextFormatter(text).decorate(params);
+  static String? decorator(String? text,
+          {Map<String, dynamic>? params, bool translate = false}) =>
+      textFormatter(text, translate: translate).decorate(params: params);
 
   static String? asLowerCaseThenTrim(String? text) =>
       text?.toLowerCase().trim();

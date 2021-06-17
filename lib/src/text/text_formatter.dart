@@ -1,3 +1,5 @@
+import 'package:cubetiq/i18n_translator.dart';
+
 /// Text Formatter
 ///
 /// @author sombochea
@@ -9,12 +11,20 @@ class TextFormatter {
     this.text = text;
   }
 
-  String? format(List<dynamic> args) {
+  TextFormatter translate({bool translate = true}) {
+    if (translate && text != null && text?.isNotEmpty == true) {
+      text = TranslatorFactory.translate(text!);
+    }
+
+    return this;
+  }
+
+  String? format({List<dynamic>? args}) {
     if (text == null) {
       return null;
     }
 
-    if (args.isEmpty) {
+    if (args == null || args.isEmpty == true) {
       return text;
     }
 
@@ -31,12 +41,12 @@ class TextFormatter {
     return msg;
   }
 
-  String? decorate(Map<String, dynamic> params) {
+  String? decorate({Map<String, dynamic>? params}) {
     if (text == null) {
       return null;
     }
 
-    if (params.isEmpty) {
+    if (params == null || params.isEmpty == true) {
       return text;
     }
 

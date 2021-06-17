@@ -25,7 +25,7 @@ abstract class XLogProvider {
     if (args == null || args.isEmpty) {
       content = data;
     } else {
-      content = StringUtils.textFormat(data, args) ?? 'null';
+      content = StringUtils.textFormat(data, args: args) ?? 'null';
     }
 
     var text = '[$type] ${nowToString()}: $prefix => $content'.trim();
