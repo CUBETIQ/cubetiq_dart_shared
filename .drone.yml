@@ -9,6 +9,6 @@ steps:
     commands:
       - flutter --version
       - dart --version
-  - name: 
+  - name: test
     commands:
       - dart test
