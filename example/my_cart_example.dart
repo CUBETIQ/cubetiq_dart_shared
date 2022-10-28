@@ -1,16 +1,14 @@
-import 'dart:convert';
-
-import 'package:cubetiq/interfaces.dart';
+import 'package:cubetiq/model.dart';
 
 void main(List<String> args) {
   MyCart.addCart(
-    Cart(1, 'Apple', 1),
+    Cart(id: 1, name: 'Apple', qty: 1),
   );
 
   MyCart.show();
 
   MyCart.addCart(
-    Cart(1, 'Apple', 2),
+    Cart(id: 1, name: 'Apple', qty: 2),
   );
 
   MyCart.show();
@@ -24,15 +22,24 @@ void main(List<String> args) {
   MyCart.show();
 }
 
-class Cart implements ToJson {
+class Cart extends BaseModel<Cart> {
   final int id;
-  final String name;
+  final String? name;
   double qty;
 
-  Cart(this.id, this.name, this.qty);
+  Cart({this.id = -1, this.name, this.qty = 0});
 
   @override
-  Map toJson() {
+  Cart fromMap(Map<String, dynamic> map) {
+    return Cart(
+      id: map['id'],
+      name: map['name'],
+      qty: map['qty'],
+    );
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
@@ -71,7 +78,14 @@ class MyCart {
   }
 
   static void show() {
-    var data = carts.map((key, value) => MapEntry(key, jsonEncode(value)));
+    var data = carts.map((key, value) => MapEntry(key, value));
+    var json = data.map((key, value) => MapEntry(key, value.toJson()));
+    var model = json.map((key, value) => MapEntry(key, Cart().fromJson(value)));
+    print('================ Map =================');
     print('$data');
+    print('================ Json =================');
+    print('$json');
+    print('================ Model =================');
+    print('$model');
   }
 }
